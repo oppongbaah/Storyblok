@@ -1,0 +1,1 @@
+import{c as m,d as n}from"/build/_shared/chunk-FPHDGEXB.js";import{f as t,g as o,o as e}from"/build/_shared/chunk-KKN7FYMC.js";o();o();function p(){let r=e();return r=n(r),t.createElement(m,{blok:r.content.blok})}export{p as default};

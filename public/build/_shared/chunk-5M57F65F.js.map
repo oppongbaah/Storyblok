@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../app/routes/es/$esSlug.tsx"],
+  "sourcesContent": ["import { json } from \"@remix-run/node\";\nimport type { LoaderFunction } from \"@remix-run/node\";\nimport { useLoaderData } from \"@remix-run/react\";\nimport { useStoryblokState, StoryblokComponent } from \"@storyblok/react\";\nimport Factory from \"~/scripts/factories/home\";\nimport HomepageLoader from \"~/scripts/loaders/home\";\n\nimport type { PageResponseData, APIQueryParams } from \"~/types\";\nimport { StoryVersions, Languages } from \"~/enums\";\n\nexport const loader: LoaderFunction = async ({ params }) => {  \n\tconst sbApiOptions: APIQueryParams = {\n\t\tversion: StoryVersions.draft,\n\t\tlanguage: Languages.spanish\n\t};\n\n\tconst response = await HomepageLoader.getLoaderData(params, sbApiOptions, Factory);\n\treturn json<PageResponseData>(response);\n};\n\nexport default function Page() {\n\tlet { story } = useLoaderData<PageResponseData>();\n\tstory = useStoryblokState(story);\n\n\treturn (\n\t\t<StoryblokComponent blok = { story.content.blok } />\n\t)\n}\n"],
+  "mappings": ";;;;;;;;;;;AAAA;AAoBe,gBAAgB;AAC9B,MAAI,EAAE,UAAU;AAChB,UAAQ,kBAAkB;AAE1B,SACC,oCAAC,oBAAD;AAAA,IAAoB,MAAS,MAAM,QAAQ;AAAA;AAAA;",
+  "names": []
+}

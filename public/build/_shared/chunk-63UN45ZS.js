@@ -1,0 +1,1 @@
+import{c as a,d as n}from"/build/_shared/chunk-FPHDGEXB.js";import{f as r,g as e,o as t}from"/build/_shared/chunk-KKN7FYMC.js";e();function s(){let{story:o}=t();return o=n(o),r.createElement(a,{blok:o.content.blok})}export{s as a};

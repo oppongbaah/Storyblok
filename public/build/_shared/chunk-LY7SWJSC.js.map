@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../app/routes/$slug.tsx"],
+  "sourcesContent": ["import { json, redirect } from \"@remix-run/node\";\nimport type { LoaderFunction } from \"@remix-run/node\";\nimport { useLoaderData } from \"@remix-run/react\";\nimport { useStoryblokState, StoryblokComponent } from \"@storyblok/react\";\nimport Factory from \"~/scripts/factories/home\";\nimport HomepageLoader from \"~/scripts/loaders/home\";\n\nimport type { PageResponseData, APIQueryParams } from \"~/types\";\nimport { StoryVersions } from \"~/enums\";\n\nexport const loader: LoaderFunction = async ({ params, request }) => {\n  const localCookie = Factory.serverCookies().getCurrentLocalFromCookies(request);\n\n  if (localCookie) {\n    return redirect(`/${localCookie.trim()}`);\n  }\n\n  const sbApiOptions: APIQueryParams = {\n\t\tversion: StoryVersions.draft,\n\t};\n  \n  const response = await HomepageLoader.getLoaderData(params, sbApiOptions, Factory);\n\n  return json<PageResponseData>(response);\n};\n\nexport default function Page() {\n  let { story } = useLoaderData<PageResponseData>();\n  story = useStoryblokState(story);\n\n  return (\n    <StoryblokComponent blok = { story.content.blok } />\n  )\n}\n"],
+  "mappings": ";;;;;;;;;;;AAAA;AA0Be,gBAAgB;AAC7B,MAAI,EAAE,UAAU;AAChB,UAAQ,kBAAkB;AAE1B,SACE,oCAAC,oBAAD;AAAA,IAAoB,MAAS,MAAM,QAAQ;AAAA;AAAA;",
+  "names": []
+}

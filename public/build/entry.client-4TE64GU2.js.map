@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../app/entry.client.tsx", "../../app/createEmotionCache.ts"],
+  "sourcesContent": ["// entry.client.tsx\nimport React, { useState } from \"react\";\nimport { hydrate } from \"react-dom\";\nimport { CacheProvider } from \"@emotion/react\";\nimport { RemixBrowser } from \"@remix-run/react\";\n\nimport { ClientStyleContext } from \"./context\";\nimport createEmotionCache from \"./createEmotionCache\";\n\ninterface ClientCacheProviderProps {\n  children: React.ReactNode;\n}\n\nfunction ClientCacheProvider({ children }: ClientCacheProviderProps) {\n  const [cache, setCache] = useState(createEmotionCache())\n\n  function reset() {\n    setCache(createEmotionCache())\n  }\n\n  return (\n    <ClientStyleContext.Provider value={{ reset }}>\n      <CacheProvider value={cache}>{children}</CacheProvider>\n    </ClientStyleContext.Provider>\n  )\n}\n\nhydrate(\n  <ClientCacheProvider>\n    <RemixBrowser />\n  </ClientCacheProvider>,\n  document,\n)\n", "import createCache from \"@emotion/cache\";\n\nexport default function createEmotionCache() {\n  return createCache({ key: \"css\" });\n}\n"],
+  "mappings": ";;;;;;;;;;;;;;AAAA;AACA,mBAAgC;AAChC,uBAAwB;;;ACFxB;AAEe,8BAA8B;AAC3C,SAAO,kCAAY,EAAE,KAAK;AAAA;;;ADU5B,6BAA6B,EAAE,YAAsC;AACnE,QAAM,CAAC,OAAO,YAAY,2BAAS;AAEnC,mBAAiB;AACf,aAAS;AAAA;AAGX,SACE,mDAAC,mBAAmB,UAApB;AAAA,IAA6B,OAAO,EAAE;AAAA,KACpC,mDAAC,eAAD;AAAA,IAAe,OAAO;AAAA,KAAQ;AAAA;AAKpC,8BACE,mDAAC,qBAAD,MACE,mDAAC,cAAD,QAEF;",
+  "names": []
+}

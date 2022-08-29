@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["browser-route-module:/home/isaac/Documents/Nexum/storyBlok/nexum-shop/app/routes/es/index.tsx?browser", "../../../../app/routes/es/index.tsx"],
+  "sourcesContent": ["export { default } from \"/home/isaac/Documents/Nexum/storyBlok/nexum-shop/app/routes/es/index.tsx\";", "export { default, loader } from \"./$esSlug\";\n"],
+  "mappings": ";;;;;;;;;;AAAA;;;ACAA;",
+  "names": []
+}
